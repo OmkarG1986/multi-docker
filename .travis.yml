@@ -22,3 +22,18 @@ after_success:
   - docker push omkarsonawane/docker-multi-nginx
   - docker push omkarsonawane/docker-multi-server
   - docker push omkarsonawane/docker-multi-worker
+
+### AWS Elastic Beanstalk deployment
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-1
+  app: "checkpoint-multi-container"
+  env: "CheckpointMultiContainer-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-340414693210"
+  bucket_path: "multi-docker-checkpoint"
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  on:
+    branch: "master"
