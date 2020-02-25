@@ -17,7 +17,7 @@ services:
     ports:
       - '8080:80'
     restart: always
-  api_server:
+  api-server:
     build:
       dockerfile: 'Dockerfile.dev'
       context: './server'
